@@ -30,17 +30,10 @@ jobs:
       - name: Install Android platform
         run: sdkmanager "platforms;android-36" "build-tools;36.0.0"
 
-      - name: - name: Download OCR models
+      - name: Download OCR models
         run: |
           mkdir -p app/src/main/assets/tessdata
           cd app/src/main/assets/tessdata
-          curl -L --fail --retry 5 --retry-delay 2 -o ara.traineddata https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/main/ara.traineddata
-          curl -L --fail --retry 5 --retry-delay 2 -o eng.traineddata https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/main/eng.traineddata
-          test -s ara.traineddata
-          test -s eng.traineddata
-        working-directory: app/src/main/assets/tessdata
-        run: |
-          rm -f PUT_ARA_TRAINEDDATA_HERE.txt
           curl -L --fail --retry 5 --retry-delay 2 -o ara.traineddata https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/main/ara.traineddata
           curl -L --fail --retry 5 --retry-delay 2 -o eng.traineddata https://raw.githubusercontent.com/tesseract-ocr/tessdata_fast/main/eng.traineddata
           test -s ara.traineddata
